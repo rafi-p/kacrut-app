@@ -2,11 +2,12 @@ const route = "http://localhost:3000";
 
 $(document).ready(() => {
   const token = localStorage.getItem("token");
+
   if (token) {
     $("#home").show();
     $("#login").hide();
     $("#register").hide();
-    // fetchJokes();
+    fetchMemes();
   } else {
     $("#home").hide();
     $("#login").show();
@@ -23,7 +24,6 @@ function login(e) {
   const email = $("#logEmail").val();
   const password = $("#logPassword").val();
 
-  console.log(email, password);
   $.ajax({
     method: "POST",
     url: route + "/login",
@@ -34,12 +34,14 @@ function login(e) {
   })
     .done((response) => {
       const token = response.access_token;
+      const userId = response.userId;
       localStorage.setItem("token", token);
+      localStorage.setItem("UserId", userId);
       $("#home").show();
       $("#login").hide();
       $("#logEmail").val("");
       $("#logPassword").val("");
-      // fetchTodos();
+      fetchMemes();
     })
     .fail((err) => {
       console.log(err);
@@ -92,37 +94,155 @@ function logout() {
   localStorage.removeItem("token");
 }
 
-// function fetchJokes() {
-//   const token = localStorage.getItem("token");
-//   $.ajax({
-//     method: "GET",
-//     url: todo,
-//     headers: {
-//       token: token,
-//     },
-//   })
-//     .done((response) => {
-//       $("#allTodo").empty();
-//       const todos = response;
-//       todos.forEach((eachTodo, index) => {
-//         const d = new Date(eachTodo.due_date);
-//         const date = d.getDate();
-//         const month = d.getMonth() + 1;
-//         const year = d.getFullYear();
-//         const fulldate = `${date}/${month}/${year}`;
-//         $("#allTodo").append(
-//           ` <tr>
-//              <th scope="row">${index + 1}</th>
-//              <td>${eachTodo.title}</td>
-//              <td>${eachTodo.description}</td>
-//              <td>${eachTodo.status}</td>
-//              <td>${fulldate}</td>
-//              <td><button type="button" class="btn btn-outline-dark">Delete</button> - <button type="button" class="btn btn-outline-dark">Edit</button>
-//            </tr>`
-//         );
-//       });
-//     })
-//     .fail((err) => {
-//       console.log(err);
-//     });
-// }
+function fetchMemes() {
+  const token = localStorage.getItem("token");
+  $.ajax({
+    method: "GET",
+    url: route + "/memes",
+    headers: {
+      access_token: token,
+    },
+  })
+    .done((response) => {
+      $("#listMemes").empty();
+      let count = 0;
+      const memes = response.slice(0, 50);
+      console.log(memes);
+      memes.forEach((eachMeme, index) => {
+        if (index % 3 === 0) {
+          count++;
+          $("#listMemes").append(`
+        <div class="row" id="${count}" style="margin-top: 30px"> 
+         <div class="col-4" onclick="addFavourite(${eachMeme.id})">
+            <h4 class="text-center"><strong>Meme#${index + 1}</strong></h4>
+            <hr />
+            <div class="profile-card-2">
+              <img
+                src="${eachMeme.url}" style="width: 350px; height: 350px; "
+              />
+              <div class="profile-name">${eachMeme.name}</div>
+              <div class="profile-username">@kacrut</div>
+             </div>
+            </div>
+        </div>
+        `);
+        } else {
+          $(`#${count}`).append(`
+         <div class="col-4" onclick="addFavourite(${eachMeme.id})">
+            <h4 class="text-center"><strong>Meme#${index + 1}</strong></h4>
+            <hr />
+            <div class="profile-card-2">
+              <img
+                src="${eachMeme.url}" style="width: 350px; height: 350px; "
+              />
+              <div class="profile-name">${eachMeme.name}</div>
+              <div class="profile-username">@kacrut</div>
+            </div>
+          </div>
+         `);
+        }
+
+        if (index === 49)
+          $(`#${count}`).append(`
+        <div class="col-4" style="margin-top: 200px; left: 200px"> 
+        <a href="#">
+        <button type="button" class="btn btn-primary" onclick="fetchMemes2()">Next->-></button> </a>
+        </div>
+        `);
+      });
+    })
+    .fail((err) => {
+      console.log(err);
+    });
+}
+
+function fetchMemes2() {
+  const token = localStorage.getItem("token");
+  $.ajax({
+    method: "GET",
+    url: route + "/memes",
+    headers: {
+      access_token: token,
+    },
+  })
+    .done((response) => {
+      $("#listMemes").empty();
+      let count = 0;
+      let i = 49;
+      const memes = response.slice(50, 100);
+      console.log(memes);
+      memes.forEach((eachMeme, index) => {
+        if (index % 3 === 0) {
+          count++;
+          i++;
+          $("#listMemes").append(`
+        <div class="row" id="${count}" style="margin-top: 30px"> 
+         <div class="col-4" onclick="addFavourite(${eachMeme.id})">
+            <h4 class="text-center"><strong>Meme#${i + 1}</strong></h4>
+            <hr />
+            <div class="profile-card-2">
+              <img
+                src="${eachMeme.url}" style="width: 350px; height: 350px; "
+              />
+              <div class="profile-name">${eachMeme.name}</div>
+              <div class="profile-username">@kacrut</div>
+             
+            </div>
+          </div>
+        </div>
+        `);
+        } else {
+          i++;
+          $(`#${count}`).append(`
+         <div class="col-4" onclick="addFavourite(${eachMeme.id})">
+            <h4 class="text-center"><strong>Meme#${i + 1}</strong></h4>
+            <hr />
+            <div class="profile-card-2">
+              <img
+                src="${eachMeme.url}" style="width: 350px; height: 350px; "
+              />
+              <div class="profile-name">${eachMeme.name}</div>
+              <div class="profile-username">@kacrut</div>
+            </div>
+          </div>
+         `);
+        }
+
+        if (index === 49)
+          $(`#${count}`).append(`
+      <div class="col-4" style="margin-top: 200px; left: 200px"> 
+      <a href="#">
+      <button type="button" class="btn btn-primary" onclick="fetchMemes()">
+       <-<-Previous
+     </button> </a>
+      </div>
+      `);
+      });
+    })
+    .fail((err) => {
+      console.log(err);
+    });
+}
+
+function addFavourite(memeId) {
+  const token = localStorage.getItem("token");
+  const UserId = localStorage.getItem("UserId");
+
+  console.log(typeof UserId, memeId);
+  $.ajax({
+    method: "POST",
+    url: route + "/favorites",
+    data: {
+      id: memeId,
+    },
+    headers: {
+      access_token: token,
+    },
+  })
+    .done((response) => {
+      console.log(response);
+    })
+    .fail((err) => {
+      console.log(err);
+    });
+}
