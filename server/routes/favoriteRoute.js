@@ -5,9 +5,9 @@ const authorization = require('../middlewares/authorization')
 
 router.use(authentication)
 router.get('/', FavoriteController.readFavorite)
+router.post('/', FavoriteController.addFavorite)
 
 router.use('/:id', authorization)
-router.post('/:id', FavoriteController.addFavorite)
 router.delete('/:id', FavoriteController.delete)
 
 module.exports = router

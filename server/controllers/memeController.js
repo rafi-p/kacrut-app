@@ -4,14 +4,16 @@ const axios = require('axios')
 
 class MemeController {
     static async readAll(req, res, next) {
-        const number = Math.random() > 0.5 ? 50 : 1
         try {
+            const count = await Meme.count("id")
+            const number = Math.random() > 0.4 ? 50 : 1
             let lower
             if (number === 1) {
-                lower = 50
+                lower = (count-50)
             } else {
-                lower = 100
+                lower = count
             }
+
             const memes = await Meme.findAll({
                 where: {
                     id: {
@@ -46,8 +48,8 @@ class MemeController {
             const payload = {
                 name: req.body.name,
                 url: req.body.url,
-                width: req.body.width,
-                height: req.body.height
+                width: +req.body.width,
+                height: +req.body.height
             }
             const newMeme = await Meme.create(payload, {
                 returning: true

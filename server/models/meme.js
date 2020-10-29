@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: `url can't be empty`
         },
-        isAlpha: {
+        isNumeric: {
           args: true,
           msg: 'width must be a number'
         }
@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: `url can't be empty`
         },
-        isAlpha: {
+        isNumeric: {
           args: true,
           msg: 'width must be a number'
         }
