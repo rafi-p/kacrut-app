@@ -1,25 +1,29 @@
-const { Meme, Favorite, User } = require('../models/index')
+const { Meme, Favorite, User, Sequelize } = require('../models/index')
+const {gte, lte} = Sequelize.Op
 const axios = require('axios')
 
 class MemeController {
     static async readAll(req, res, next) {
+        const number = Math.random() > 0.5 ? 50 : 1
         try {
+            let lower
+            if (number === 1) {
+                lower = 50
+            } else {
+                lower = 100
+            }
             const memes = await Meme.findAll({
-                order: [['id', 'asc']],
-                limit: 50
+                where: {
+                    id: {
+                        [gte]: number,
+                        [lte]: lower
+                    }
+                },
+                order: [['id', 'asc']]
             })
+            console.log(number, lower)
             res.status(200).json(memes)
 
-        } catch (err) {
-            next(err)
-        }
-    }
-
-    static async randomMeme (req, res, next) {
-        const id = Math.floor(Math.random()*101)
-        try {
-            const meme = await Meme.findByPk(id)
-            res.status(200).json(meme)
         } catch (err) {
             next(err)
         }
