@@ -35,32 +35,33 @@ List of available endpoints:
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
+  * **Code:** 201 <br />
     **Content:** 
     ```javascript
     {
-        isi disini ya
+      "id": 2,
+      "email": "rafi@gmail.com"
     }
     ```
 
  
-* **Error Response:** ini juga diisi
+* **Error Response:** 
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 400 BAD REQUEST <br />
     **Content:** 
     ```javascript
-    {
-        isi disini ya
-    }
+  { 
+    msg : ['Please use email format', 'Email is required', 'Password is required', 'Password minimal 5 characters'] 
+  }
     ```
 
   OR
 
-  * **Code:** 401 UNAUTHORIZED <br />
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
     **Content:** 
     ```javascript
     {
-        isi disini ya
+        msg : "internal server error"
     }
     ```
 
@@ -98,28 +99,28 @@ List of available endpoints:
     **Content:** 
     ```javascript
     {
-        isi disini ya
+        access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJkZWRlQGdtYWlsLmNvbSIsImlhdCI6MTYwMzgwOTA3MH0.ZOvOmP8v4sPgbE5sAxM2jeNPNPi9hr-UTllXyYaPw9A"
     }
     ```
 
  
-* **Error Response:** ini juga diisi
+* **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
+  * **Code:** 401 BAD REQUEST <br />
     **Content:** 
     ```javascript
     {
-        isi disini ya
+        msg : 'Wrong email/password'
     }
     ```
 
   OR
 
-  * **Code:** 401 UNAUTHORIZED <br />
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
     **Content:** 
     ```javascript
     {
-        isi disini ya
+        msg : "internal server error"
     }
     ```
 
