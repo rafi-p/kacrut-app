@@ -22,11 +22,4 @@ async function authorization(req, res, next) {
     }
 }
 
-
-
-
-const authorization = async (req, res, next) => {
-}
-
-
 module.exports = authorization

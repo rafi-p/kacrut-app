@@ -30,11 +30,3 @@ async function authentication (req, res, next) {
 
 module.exports = authentication
 
-
-
-const authenticate = async (req, res, next) => {
-
-}
-
-module.exports = authenticate
-

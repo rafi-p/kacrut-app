@@ -6,13 +6,13 @@ class UserController {
     static async register(req, res, next) {
         try {
             const dataUser = {
-                emmail: req.body.emmail,
+                email: req.body.email,
                 password: req.body.password
             }
             const newUser = await User.create(dataUser)
             res.status(201).json({
                 id: newUser.id,
-                emmail: newUser.emmail
+                email: newUser.email
             })
 
         } catch (error) {
@@ -22,9 +22,9 @@ class UserController {
 
     static async login(req, res, next) {
         try {
-            const { emmail, password } = req.body
+            const { email, password } = req.body
             
-            const user = await User.findOne({where: {emmail: emmail}
+            const user = await User.findOne({where: {email: email}
             })  
     
             if(!user) {
@@ -34,7 +34,7 @@ class UserController {
             } else {
                 const access_token = signToken({
                     id: user.id,
-                    emmail: user.emmail
+                    email: user.email
                 })
                 res.status(200).json({access_token})
             }

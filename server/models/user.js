@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    emmail: {
+    email: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
@@ -37,10 +37,9 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: 'Password is required'
         },
-        isShort(value) {
-          if(value.length < 5) {
-            throw new Error('Password minimal 5 characters')
-          }
+        len : {
+          args: [5,20],
+          msg: `Password minimal 5 characters and a maximum of 20 characters`
         }
       }
       
