@@ -1,3 +1,4 @@
+
 const { verifyToken } = require('../helpers/jwt')
 const {  User, Meme, Favorite } = require('../models/index')
 
@@ -28,3 +29,12 @@ async function authentication (req, res, next) {
 }
 
 module.exports = authentication
+
+
+
+const authenticate = async (req, res, next) => {
+
+}
+
+module.exports = authenticate
+

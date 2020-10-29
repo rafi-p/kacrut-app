@@ -1,3 +1,4 @@
+
 const {  User, Meme, Favorite  } = require('../models/index')
 
 async function authorization(req, res, next) {
@@ -21,6 +22,11 @@ async function authorization(req, res, next) {
     }
 }
 
+
+
+
+const authorization = async (req, res, next) => {
+}
 
 
 module.exports = authorization
