@@ -245,6 +245,13 @@ List of available endpoints:
 
   `POST`
 
+* **Data Params**
+
+    * **headers**
+        ```javascript
+        access_token = "string"
+        ```
+
 * **Success Response:**
 
   * **Code:** 200 <br />
