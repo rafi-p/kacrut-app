@@ -5,6 +5,7 @@ List of available endpoints:
 * POST /login
 * GET /memes
 * GET /memes/randomJoke
+* GET /memes/gif
 * POST /memes
 * GET /favorites
 * POST /favorites
@@ -142,7 +143,13 @@ List of available endpoints:
 * **Method:**
 
   `GET`
+* **Data Params**
 
+    * **headers**
+        ```javascript
+        access_token = "string"
+        ```
+        
 * **Success Response:**
 
   * **Code:** 200 <br />
@@ -192,6 +199,13 @@ List of available endpoints:
 
   `GET`
 
+* **Data Params**
+
+  * **headers**
+      ```javascript
+      access_token = "string"
+      ```
+
 * **Success Response:**
 
   * **Code:** 200 <br />
@@ -232,6 +246,45 @@ List of available endpoints:
   ```
 
 ----
+
+**GET GIF**
+----
+  Returns data of searched gif
+
+* **URL**
+
+  /memes/gif
+
+* **Method:**
+
+  `GET`
+
+* **Data Params**
+
+  **headers**
+  ```javascript
+  access_token: "string"
+  ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```javascript
+    [
+        {
+          type: "string"
+          id: "alpahumeric",
+          title: "string"
+          url: "string",
+          ....
+        },
+        {
+            ...
+        },
+    ]
+    ```
+
 
 **ADD MEME**
 ----
@@ -284,6 +337,8 @@ List of available endpoints:
 
 ----
 
+
+
 **GET FAVORITES**
 ----
   Returns data of user's favorite memes
@@ -302,7 +357,24 @@ List of available endpoints:
     **Content:** 
     ```javascript
     [
-        ntar y
+      {
+        "UserId": 3,
+        "MemeId": 1,
+        "createdAt": "2020-10-29T17:00:00.000Z",
+        "updatedAt": "2020-10-29T17:00:00.000Z",
+        "Meme": {
+            "id": 1,
+            "name": "Drake Hotline Bling",
+            "url": "https://i.imgflip.com/30b1gx.jpg",
+            "width": 1200,
+            "height": 1200,
+            "createdAt": "2020-10-29T07:39:01.840Z",
+            "updatedAt": "2020-10-29T07:39:01.840Z"
+        }
+      },
+      {
+        ...
+      },
     ]
     ```
 
@@ -365,9 +437,12 @@ List of available endpoints:
   * **Code:** 200 <br />
     **Content:** 
     ```javascript
-    [
-        ntar y
-    ]
+    {
+      "UserId": 3,
+      "MemeId": 1,
+      "createdAt": "2020-10-29T17:00:00.000Z",
+      "updatedAt": "2020-10-29T17:00:00.000Z",
+    }
     ```
 
 * **Error Response:**
@@ -427,9 +502,9 @@ List of available endpoints:
   * **Code:** 200 <br />
     **Content:** 
     ```javascript
-    [
-        ntar y
-    ]
+    {
+      msg: "Deleted successfully"
+    }
     ```
 
 * **Error Response:**

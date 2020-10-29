@@ -59,6 +59,19 @@ class MemeController {
             next(err)
         }
     }
+    
+    static async searchGIF(req, res, next) {
+        try {
+            const q = req.body.question
+            const result = await axios({
+                method: 'GET',
+                url: `https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY}&q=${q}&limit=20&offset=0&rating=g&lang=en`
+            })
+            res.status(200).json(result.data.data)
+        } catch (err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = MemeController

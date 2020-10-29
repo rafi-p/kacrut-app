@@ -3,7 +3,7 @@ const { Meme, Favorite, User } = require('../models/index')
 class FavoriteController {
     static async readFavorite(req, res, next) {
         try {
-            const UserId = req.loggedIn.id
+            const UserId = +req.loggedInUser.id
             const favorites = await Favorite.findAll({
                 where: {
                     UserId: UserId
@@ -19,10 +19,10 @@ class FavoriteController {
     static async addFavorite (req, res, next) {
         try {
             const memeId = +req.body.id
-            const UserId = req.loggedIn.id
+            const UserId = +req.loggedInUser.id
             const payload = {
-                memeId,
-                UserId
+                MemeId: memeId,
+                UserId: UserId
             }
             const newFav = await Favorite.create(payload, {
                 returning: true
@@ -38,16 +38,17 @@ class FavoriteController {
             const id = +req.params.id
             const destroyed = await Favorite.destroy({
                 where: {
-                    id: id
+                    id: +req.params.id
                 }
             })
+
             if (destroyed !== 1) {
                 throw {msg: `Delete Failed`, status: 404}
             } else {
                 res.status(200).json({msg: 'Deleted successfully'})
             }
         } catch (err) {
-            
+            next(err)
         }
     }
 }
