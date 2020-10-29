@@ -11,13 +11,85 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Meme.init({
-    name: DataTypes.STRING,
-    url: DataTypes.STRING,
-    width: DataTypes.INTEGER,
-    height: DataTypes.INTEGER
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: `Name can't be empty`
+        },
+        notEmpty: {
+          args: true,
+          msg: `Name can't be empty`
+        }
+      }
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: `url can't be empty`
+        },
+        notEmpty: {
+          args: true,
+          msg: `url can't be empty`
+        },
+        isUrl: {
+          args: true,
+          msg: 'Please insert a valid url'
+        }
+      }
+    },
+    width: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: `url can't be empty`
+        },
+        notEmpty: {
+          args: true,
+          msg: `url can't be empty`
+        },
+        isNumeric: {
+          args: true,
+          msg: 'width must be a number'
+        }
+      }
+    },
+    height: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: `url can't be empty`
+        },
+        notEmpty: {
+          args: true,
+          msg: `url can't be empty`
+        },
+        isNumeric: {
+          args: true,
+          msg: 'width must be a number'
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Meme',
   });
+
+  Meme.addHook('beforeValidate', (instance, option) => {
+    if (!instance.width || !instance.height) {
+      instance.width = 500
+      instance.height = 700
+    }
+  })
+
   return Meme;
 };
