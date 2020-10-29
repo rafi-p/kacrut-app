@@ -13,41 +13,203 @@
     <title>Kacrut App</title>
   </head>
   <body id="toogle-color">
-    <section class="container text-center" id="landing">
-      <form class="form-signin" onsubmit="login(event)">
+    <section class="container-xl text-center" id="login">
+      <form
+        class="form-signin bg-warning border border-info rounded text-white"
+        onsubmit="login(event)"
+      >
         <img
-          class="mb-4"
+          class="mb-4 rounded-circle"
           src="images/kacrut-app.png"
           alt=""
           width="200"
           height="200"
         />
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
+        <label for="logEmail" class="sr-only"> Email address</label>
         <input
           type="email"
-          id="inputEmail"
+          id="logEmail"
           class="form-control"
           placeholder="Email address"
           required=""
           autofocus=""
         />
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="logPassword" class="sr-only">Password</label>
         <input
           type="password"
-          id="inputPassword"
+          id="logPassword"
           class="form-control"
           placeholder="Password"
           required=""
         />
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me" /> Remember me
-          </label>
-        </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Sign in
         </button>
+        <div class="checkbox mb-3">
+          <p>
+            You don't have an account, do you? <br />
+            Geez, <a href="" onclick="toRegister(event)">Sign Up</a> here
+          </p>
+        </div>
+        <p class="mt-5 mb-3 text-muted">©2020 Kacrut App</p>
+      </form>
+    </section>
+
+    <section id="home" class="container jmbtrn">
+      <nav class="navbar navbar-expand-md navbar-warning fixed-top bg-warning">
+        <a class="navbar-brand text-dark">Kacrut</a>
+        <button class="navbar-toggler" type="button"></button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Favourite</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 mr-2">
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+          <button id="logout" class="btn btn-outline-danger">Logout</button>
+        </div>
+      </nav>
+
+      <main role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div
+          class="jumbotron"
+          style="
+            background-image: url(images/fin-and-jake-adventure.jpg);
+            background-size: cover;
+            height: 400px;
+          "
+        >
+          <div class="container">
+            <blockquote
+              class="blockquote text-center"
+              style="margin-top: 130px"
+            >
+              <p class="mb-0 lead text-white">
+                I'm sick of following my dreams, man. I'm just going to ask
+                where they're going and hook up with 'em later'.
+              </p>
+              <footer class="blockquote-footer text-white font-weight-bold">
+                Mitch Hedberg
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-4">
+              <h2>Joke No 1</h2>
+              <p>
+                Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+                tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus. Etiam porta sem malesuada
+                magna mollis euismod. Donec sed odio dui.
+              </p>
+              <p>
+                <a class="btn btn-secondary" href="#" role="button"
+                  >View details »</a
+                >
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h2>Joke No 2</h2>
+              <p>
+                Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+                tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus. Etiam porta sem malesuada
+                magna mollis euismod. Donec sed odio dui.
+              </p>
+              <p>
+                <a class="btn btn-secondary" href="#" role="button"
+                  >View details »</a
+                >
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h2>Joke No 3</h2>
+              <p>
+                Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
+                egestas eget quam. Vestibulum id ligula porta felis euismod
+                semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                condimentum nibh, ut fermentum massa justo sit amet risus.
+              </p>
+              <p>
+                <a class="btn btn-secondary" href="#" role="button"
+                  >View details »</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <hr />
+        </div>
+        <!-- /container -->
+      </main>
+
+      <footer class="container">
+        <p>©2020 Kacrut App</p>
+      </footer>
+    </section>
+
+    <section class="container-xl text-center" id="register">
+      <form
+        class="form-signin border border-info rounded text-white"
+        onsubmit="register(event)"
+        style="background-color: rgba(255, 183, 0, 0.761)"
+      >
+        <img
+          class="mb-4 rounded-circle"
+          src="images/kacrut-app.png"
+          alt=""
+          width="200"
+          height="200"
+        />
+        <h1 class="h3 mb-3 font-weight-normal">Sign Up Below</h1>
+        <label for="registerEmail" class="sr-only"> Email address</label>
+        <input
+          type="email"
+          id="registerEmail"
+          class="form-control"
+          placeholder="Email address"
+          required=""
+          autofocus=""
+        />
+        <label for="registerPassword" class="sr-only">Password</label>
+        <input
+          type="password"
+          id="registerPassword"
+          class="form-control"
+          placeholder="Password"
+          required=""
+        />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Sign up
+        </button>
+        <div class="checkbox mb-3">
+          <p>
+            Already have an account? <br />
+            <a href="" onclick="toLogin(event)">Sign In</a> here
+          </p>
+        </div>
         <p class="mt-5 mb-3 text-muted">©2020 Kacrut App</p>
       </form>
     </section>
