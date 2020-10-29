@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <title>Kacrut App</title>
+  </head>
+  <body>
+    <section id="jmbtrn" class="container">
+      <nav class="navbar navbar-expand-md navbar-warning fixed-top bg-warning">
+        <a class="navbar-brand text-dark">Kacrut</a>
+        <button class="navbar-toggler" type="button"></button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Favourite</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 mr-2">
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+          <button id="logout" class="btn btn-outline-danger">Logout</button>
+        </div>
+      </nav>
+
+      <main role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div
+          class="jumbotron"
+          style="
+            background-image: url(images/fin-and-jake-adventure.jpg);
+            background-size: cover;
+            height: 400px;
+          "
+        >
+          <div class="container">
+            <blockquote
+              class="blockquote text-center"
+              style="margin-top: 130px"
+            >
+              <p class="mb-0 lead text-white">
+                I'm sick of following my dreams, man. I'm just going to ask
+                where they're going and hook up with 'em later'.
+              </p>
+              <footer class="blockquote-footer text-white font-weight-bold">
+                Mitch Hedberg
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-4">
+              <h2>Joke No 1</h2>
+              <p>
+                Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+                tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus. Etiam porta sem malesuada
+                magna mollis euismod. Donec sed odio dui.
+              </p>
+              <p>
+                <a class="btn btn-secondary" href="#" role="button"
+                  >View details »</a
+                >
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h2>Joke No 2</h2>
+              <p>
+                Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+                tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus. Etiam porta sem malesuada
+                magna mollis euismod. Donec sed odio dui.
+              </p>
+              <p>
+                <a class="btn btn-secondary" href="#" role="button"
+                  >View details »</a
+                >
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h2>Joke No 3</h2>
+              <p>
+                Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
+                egestas eget quam. Vestibulum id ligula porta felis euismod
+                semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                condimentum nibh, ut fermentum massa justo sit amet risus.
+              </p>
+              <p>
+                <a class="btn btn-secondary" href="#" role="button"
+                  >View details »</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <hr />
+        </div>
+        <!-- /container -->
+      </main>
+
+      <footer class="container">
+        <p>©2020 Kacrut App</p>
+      </footer>
+    </section>
+
+    <!-- SCRIPT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>'
+        );
+    </script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SCRIPT -->
+  </body>
+</html>
