@@ -9,7 +9,9 @@ class UserController {
                 email: req.body.email,
                 password: req.body.password
             }
-            const newUser = await User.create(dataUser)
+            const newUser = await User.create(dataUser, {
+                returning: true
+            })
             res.status(201).json({
                 id: newUser.id,
                 email: newUser.email
@@ -24,7 +26,10 @@ class UserController {
         try {
             const { email, password } = req.body
             
-            const user = await User.findOne({where: {email: email}
+            const user = await User.findOne({
+                where: {
+                    email: email
+                }
             })  
     
             if(!user) {
