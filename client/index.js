@@ -23,6 +23,19 @@ function login(e) {
   const email = $("#logEmail").val();
   const password = $("#logPassword").val();
 
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
   console.log(email, password);
   $.ajax({
     method: "POST",
@@ -40,9 +53,19 @@ function login(e) {
       $("#logEmail").val("");
       $("#logPassword").val("");
       // fetchJokes();
+
+      Toast.fire({
+        icon: 'success',
+        title: `Log in successfully`
+      })
     })
     .fail((err) => {
-      console.log(err);
+      console.log(err.responseJSON.msg);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: err.responseJSON.msg
+    })
     });
 }
 
@@ -53,6 +76,17 @@ function onSignIn(googleUser) {
   // console.log('Image URL: ' + profile.getImageUrl());
   // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
   let access_token = googleUser.getAuthResponse().id_token;
   // console.log(access_token)
@@ -75,6 +109,11 @@ function onSignIn(googleUser) {
 
 
           // fetchTodo()
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Log in successfully'
+          })
 
       })
       .fail(err => {
@@ -116,9 +155,20 @@ function register(e) {
       $("#register").hide();
       $("#home").hide();
       // fetchJokes();
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Your account has been registered'
+    })
     })
     .fail((err) => {
       console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: err.responseJSON.msg
+    })
     });
 }
 
