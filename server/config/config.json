@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "b4s4r4",
+    "password": "postgres",
     "database": "kacrutgag",
     "host": "127.0.0.1",
     "dialect": "postgres"
