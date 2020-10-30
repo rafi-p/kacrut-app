@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- GOOGLE CLIENT SIGN IN -->
-    <meta name="google-signin-client_id" content="312575173633-dlrf6hkcrsvge6t1ltb7rjm8d58j6ebs.apps.googleusercontent.com">
-    
+    <meta
+      name="google-signin-client_id"
+      content="312575173633-dlrf6hkcrsvge6t1ltb7rjm8d58j6ebs.apps.googleusercontent.com"
+    />
+
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -51,7 +54,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Sign in
         </button>
-       
+
         <div class="checkbox mb-3">
           <p>
             You don't have an account, do you? <br />
@@ -62,7 +65,6 @@
         <!-- GOOGLE SING IN SIGN OUT -->
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <!-- <a href="#" onclick="signOut();">Sign out</a> -->
-
 
         <p class="mt-5 mb-3 text-muted">©2020 Kacrut App</p>
       </form>
@@ -129,11 +131,14 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" onclick="myFavourite()">My Favourite
-              <span class="sr-only"></span></a>
+              <a class="nav-link" href="#" onclick="myFavourite()"
+                >My Favourite <span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="getJoke()">Jokes Corner</a>
             </li>
           </ul>
-
 
           <form class="form-inline my-2 my-lg-0 mr-2">
             <input
@@ -141,8 +146,13 @@
               type="text"
               placeholder="Search"
               aria-label="Search"
+              id="querygif"
             />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button
+              class="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+              onclick="getGif()"
+            >
               Search
             </button>
           </form>
@@ -156,14 +166,12 @@
         <div class="card-body" id="list-allMemes">
        </div>
     </section> -->
-     <!-- Section MyFavorit -->
-  <section class="w3l-covers-18" id="listFavourite">
-    <div class="covers-main editContent" id="list-allMemes">
-      <div class="main-titles-head text-center" id="list-title">
-      </div>
-      
-    </div>
-  </section>
+      <!-- Section MyFavorit -->
+      <section class="w3l-covers-18" id="listFavourite">
+        <div class="covers-main editContent" id="list-allMemes">
+          <div class="main-titles-head text-center" id="list-title"></div>
+        </div>
+      </section>
 
       <hr />
       <footer class="container">
@@ -172,14 +180,15 @@
     </section>
     <!-- HOME -->
 
-        <!-- REQUIRE SWEET ALERT 2 -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- REQUIRE SWEET ALERT 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- REQUIRE GOOGLE SIGN IN -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- SCRIPT -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
     <!-- SCRIPT -->
   </body>
