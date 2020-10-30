@@ -19,6 +19,7 @@ class FavoriteController {
     static async addFavorite (req, res, next) {
         try {
             const memeId = +req.body.id
+            console.log((memeId, ">>> ini MemeId"));
             const UserId = +req.loggedInUser.id
             const payload = {
                 MemeId: memeId,

@@ -1,9 +1,15 @@
 {
   "development": {
     "username": "postgres",
+<<<<<<< HEAD
     "password": "torian05092002",
     "database": "9gagclone",
     "host": "127.0.0.1",
+=======
+    "password": "postgres",
+    "database": "kacrutgag",
+    "host": "localhost",
+>>>>>>> 8ac8e44284606875ce1ecc8dfbc0404ef59c463b
     "dialect": "postgres"
   },
   "test": {
