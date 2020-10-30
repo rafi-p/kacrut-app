@@ -5,25 +5,26 @@ const axios = require('axios')
 class MemeController {
     static async readAll(req, res, next) {
         try {
-            const count = await Meme.count("id")
-            const number = Math.random() > 0.4 ? 50 : 1
-            let lower
-            if (number === 1) {
-                lower = (count-50)
-            } else {
-                lower = count
-            }
+            // const count = await Meme.count("id")
+            // const number = Math.random() > 0.4 ? 50 : 1
+            // let lower
+            // if (number === 1) {
+            //     lower = (count-50)
+            // } else {
+            //     lower = count
+            // }
 
             const memes = await Meme.findAll({
-                where: {
-                    id: {
-                        [gte]: number,
-                        [lte]: lower
-                    }
-                },
-                order: [['id', 'asc']]
+                // where: {
+                //     id: {
+                //         [gte]: number,
+                //         [lte]: lower
+                //     }
+                // },
+                // order: [['id', 'asc']]
+                order : Sequelize.literal('random()')
             })
-            console.log(number, lower)
+            // console.log(number, lower)
             res.status(200).json(memes)
 
         } catch (err) {
