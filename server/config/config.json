@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
-    "database": "kacrutgag",
+    "password": "torian05092002",
+    "database": "9gagclone",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
