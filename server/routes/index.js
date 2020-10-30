@@ -7,6 +7,7 @@ const authentication = require("../middlewares/authentication");
 
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
+router.post("/googleLogin", UserController.googleLogin);
 
 router.use(authentication);
 router.use("/memes", memeRoute);

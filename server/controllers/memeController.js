@@ -1,5 +1,4 @@
 const { Meme, Favorite, User, Sequelize } = require("../models/index");
-const { gte, lte } = Sequelize.Op;
 const axios = require("axios");
 
 class MemeController {

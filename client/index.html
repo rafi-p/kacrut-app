@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- GOOGLE CLIENT SIGN IN -->
+    <meta
+      name="google-signin-client_id"
+      content="312575173633-dlrf6hkcrsvge6t1ltb7rjm8d58j6ebs.apps.googleusercontent.com"
+    />
+
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -47,12 +54,18 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Sign in
         </button>
+
         <div class="checkbox mb-3">
           <p>
             You don't have an account, do you? <br />
             Geez, <a href="" onclick="toRegister(event)">Sign Up</a> here
           </p>
         </div>
+
+        <!-- GOOGLE SING IN SIGN OUT -->
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <!-- <a href="#" onclick="signOut();">Sign out</a> -->
+
         <p class="mt-5 mb-3 text-muted">©2020 Kacrut App</p>
       </form>
     </section>
@@ -118,20 +131,28 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">My Favourite</a>
+              <a class="nav-link" href="#" onclick="myFavourite()"
+                >My Favourite <span class="sr-only"></span
+              ></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" onclick="getJoke()">Jokes Corner</a>
             </li>
           </ul>
+
           <form class="form-inline my-2 my-lg-0 mr-2">
             <input
               class="form-control mr-sm-2"
               type="text"
-              placeholder="Search Gif Here"
+              placeholder="Search"
               aria-label="Search"
+              id="querygif"
             />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button
+              class="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+              onclick="getGif()"
+            >
               Search
             </button>
           </form>
@@ -140,13 +161,30 @@
       </nav>
 
       <div id="listMemes" style="margin-top: 50px"></div>
+      <!-- <div id="listFavourite" style="margin-top: 50px;"></div> -->
+      <!-- <section id="listFavourite" class="card" style="width: 18rem;">
+        <div class="card-body" id="list-allMemes">
+       </div>
+    </section> -->
+      <!-- Section MyFavorit -->
+      <section class="w3l-covers-18" id="listFavourite">
+        <div class="covers-main editContent" id="list-allMemes">
+          <div class="main-titles-head text-center" id="list-title"></div>
+        </div>
+      </section>
 
       <hr />
-      <footer class="container" id="fot">
+      <footer class="container">
         <p>©2020 Kacrut App</p>
       </footer>
     </section>
     <!-- HOME -->
+
+    <!-- REQUIRE SWEET ALERT 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- REQUIRE GOOGLE SIGN IN -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- SCRIPT -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
