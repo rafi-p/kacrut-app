@@ -40,7 +40,7 @@ class UserController {
           id: user.id,
           email: user.email,
         });
-        res.status(200).json({ access_token, userId: user.id });
+        res.status(200).json({ access_token });
       }
     } catch (error) {
       next(error);

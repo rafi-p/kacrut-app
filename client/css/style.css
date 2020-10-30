@@ -62,9 +62,6 @@ body {
   border-top-right-radius: 0;
 }
 
-/*****************
-    - Header -
-*****************/
 header {
   position: relative;
   left: 0;
@@ -79,7 +76,6 @@ header {
   margin-bottom: 30px;
 }
 
-/* Logo */
 header .logo {
   clear: both;
   display: block;
@@ -87,7 +83,6 @@ header .logo {
   padding-bottom: 10px;
 }
 
-/* Title */
 header h1 {
   font-weight: 300;
   font-size: 24px;
@@ -194,6 +189,35 @@ body {
 .profile-card-1 .profile-icons .fa {
   margin: 5px;
   color: #777;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.jokee div:hover {
+  cursor: pointer;
+  background-color: #8ba3c9;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 .profile-card-1:hover {

@@ -1,4 +1,5 @@
 const route = "http://localhost:3000";
+let deliv;
 
 $(document).ready(() => {
   const token = localStorage.getItem("token");
@@ -146,8 +147,8 @@ function fetchMemes() {
           $(`#${count}`).append(`
         <div class="col-4" style="margin-top: 200px; left: 200px"> 
         <a href="#">
-        <button type="button" class="btn btn-primary" onclick="fetchMemes2()">Next->-></button> </a>
-        </div>
+        <button type="button" class="btn btn-primary"  onclick="fetchMemes2()">Next->-></button> </a>
+        </div> 
         `);
       });
     })
@@ -245,4 +246,54 @@ function addFavourite(memeId) {
     .fail((err) => {
       console.log(err);
     });
+}
+
+function getJoke() {
+  const token = localStorage.getItem("token");
+
+  $("#listMemes").empty();
+  $("#last-line").empty();
+  $("#fot").empty();
+
+  $.ajax({
+    method: "GET",
+    url: route + "/memes/randomJoke",
+    headers: {
+      access_token: token,
+    },
+  })
+    .done((response) => {
+      console.log(response.delivery);
+      $("#listMemes").append(`
+    <div class="row justify-content-around jokee">
+      <div class="card bg-light col-4" onclick="showJoke()">
+        <div class="card-header">@Kacrut</div>
+          <div class="card-body">
+            <h5 class="card-title">Setup:</h5>
+            <p class="card-text">${response.setup}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      `);
+      deliv = response.delivery;
+    })
+    .fail((err) => {
+      console.log(err);
+    });
+}
+
+function showJoke() {
+  $("#listMemes").empty();
+  $("#listMemes").append(`
+  <div class="row justify-content-around jokee">
+      <div class="card bg-light col-4" onclick="getJoke()">
+        <div class="card-header">@Kacrut</div>
+          <div class="card-body">
+            <h5>${deliv}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
 }
