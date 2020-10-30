@@ -428,7 +428,7 @@ List of available endpoints:
     * **data**
         ```javascript
         {
-            UserId: "integer",
+            id: "integer",
             MemeId: "integer"
         }
         ```
