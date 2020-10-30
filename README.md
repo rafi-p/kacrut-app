@@ -50,9 +50,9 @@ List of available endpoints:
   * **Code:** 400 BAD REQUEST <br />
     **Content:** 
     ```javascript
-  { 
-    msg : ['Please use email format', 'Email is required', 'Password is required', 'Password minimal 5 characters'] 
-  }
+    { 
+      msg : ['Please use email format', 'Email is required', 'Password is required', 'Password minimal 5 characters'] 
+    }
     ```
 
   OR
@@ -99,7 +99,7 @@ List of available endpoints:
     **Content:** 
     ```javascript
     {
-        access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJkZWRlQGdtYWlsLmNvbSIsImlhdCI6MTYwMzgwOTA3MH0.ZOvOmP8v4sPgbE5sAxM2jeNPNPi9hr-UTllXyYaPw9A"
+        access_token: "string"
     }
     ```
 

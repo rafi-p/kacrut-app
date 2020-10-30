@@ -70,11 +70,6 @@ function login(e) {
 }
 
 function onSignIn(googleUser) {
-  // var profile = googleUser.getBasicProfile();
-  // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  // console.log('Name: ' + profile.getName());
-  // console.log('Image URL: ' + profile.getImageUrl());
-  // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
   const Toast = Swal.mixin({
     toast: true,
@@ -89,9 +84,6 @@ function onSignIn(googleUser) {
   })
 
   let access_token = googleUser.getAuthResponse().id_token;
-  // console.log(access_token)
-
-  //verify di backend
 
   $.ajax({
       method: "POST",
@@ -106,8 +98,6 @@ function onSignIn(googleUser) {
           $("#home").show();
           $("#login").hide();
           $("#register").hide();
-
-
           // fetchTodo()
 
           Toast.fire({
@@ -177,10 +167,13 @@ function logout() {
   $("#home").hide();
   $("#register").hide();
   localStorage.removeItem("token");
-  var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
-    console.log('User signed out.');
-  });
+  signOut()
+
+  Swal.fire({
+    icon: 'info',
+    title: 'Success',
+    text: 'Logged Out'
+  })
 }
 
 function signOut() {
