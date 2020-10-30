@@ -77,10 +77,6 @@ function login(e) {
 }
 
 function onSignIn(googleUser) {
-<<<<<<< HEAD
-
-=======
->>>>>>> 8ac8e44284606875ce1ecc8dfbc0404ef59c463b
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -94,6 +90,9 @@ function onSignIn(googleUser) {
   })
 
   let access_token = googleUser.getAuthResponse().id_token;
+  // console.log(access_token)
+
+  //verify di backend
 
   $.ajax({
       method: "POST",
@@ -108,6 +107,8 @@ function onSignIn(googleUser) {
           $("#home").show();
           $("#login").hide();
           $("#register").hide();
+
+
           // fetchTodo()
 
           Toast.fire({
@@ -177,13 +178,10 @@ function logout() {
   $("#home").hide();
   $("#register").hide();
   localStorage.removeItem("token");
-  signOut()
-
-  Swal.fire({
-    icon: 'info',
-    title: 'Success',
-    text: 'Logged Out'
-  })
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
 }
 
 function signOut() {
@@ -362,7 +360,6 @@ function myFavourite() {
             <div class="caption">
               <h6><a href="#page">${e.Meme.name}</a></h6>
             </div>
-
           </div>
         </div>
       </div>
@@ -396,4 +393,3 @@ function addFavourite(memeId) {
       console.log(err);
     });
 }
-

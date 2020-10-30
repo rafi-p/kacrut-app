@@ -86,8 +86,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Meme.addHook('beforeValidate', (instance, option) => {
     if (!instance.width || !instance.height) {
-      instance.width = 500
-      instance.height = 700
+      instance.width = 350
+      instance.height = 350
     }
   })
 
