@@ -39,12 +39,49 @@ function login(e) {
       $("#login").hide();
       $("#logEmail").val("");
       $("#logPassword").val("");
-      // fetchTodos();
+      // fetchJokes();
     })
     .fail((err) => {
       console.log(err);
     });
 }
+
+function onSignIn(googleUser) {
+  // var profile = googleUser.getBasicProfile();
+  // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  // console.log('Name: ' + profile.getName());
+  // console.log('Image URL: ' + profile.getImageUrl());
+  // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+
+  let access_token = googleUser.getAuthResponse().id_token;
+  // console.log(access_token)
+
+  //verify di backend
+
+  $.ajax({
+      method: "POST",
+      url: route + '/googleLogin',
+      data: {
+          access_token
+      }
+  })
+      .done(res => {
+          const access_token = res.access_token
+          localStorage.setItem('token', access_token)
+          $("#home").show();
+          $("#login").hide();
+          $("#register").hide();
+
+
+          // fetchTodo()
+
+      })
+      .fail(err => {
+          console.log(err)
+      })
+}
+
 
 function toRegister(e) {
   e.preventDefault();
@@ -78,7 +115,7 @@ function register(e) {
       $("#login").show();
       $("#register").hide();
       $("#home").hide();
-      // fetchTodos();
+      // fetchJokes();
     })
     .fail((err) => {
       console.log(err);
@@ -90,15 +127,26 @@ function logout() {
   $("#home").hide();
   $("#register").hide();
   localStorage.removeItem("token");
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
+}
+
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
 }
 
 // function fetchJokes() {
 //   const token = localStorage.getItem("token");
 //   $.ajax({
 //     method: "GET",
-//     url: todo,
+//     url: route + "/memes",
 //     headers: {
-//       token: token,
+//       access_token: token,
 //     },
 //   })
 //     .done((response) => {
