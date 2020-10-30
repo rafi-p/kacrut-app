@@ -27,6 +27,18 @@ function login(e) {
   const email = $("#logEmail").val();
   const password = $("#logPassword").val();
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
   $.ajax({
     method: "POST",
     url: route + "/login",
@@ -46,11 +58,70 @@ function login(e) {
       $("#logPassword").val("");
       fetchMemes();
       myFavourite()
+    
+      // fetchJokes();
+      Toast.fire({
+        icon: 'success',
+        title: `Log in successfully`
+      })
+
     })
     .fail((err) => {
-      console.log(err);
+      console.log(err.responseJSON.msg);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: err.responseJSON.msg
+    })
     });
 }
+
+function onSignIn(googleUser) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+  let access_token = googleUser.getAuthResponse().id_token;
+  // console.log(access_token)
+
+  //verify di backend
+
+  $.ajax({
+      method: "POST",
+      url: route + '/googleLogin',
+      data: {
+          access_token
+      }
+  })
+      .done(res => {
+          const access_token = res.access_token
+          localStorage.setItem('token', access_token)
+          $("#home").show();
+          $("#login").hide();
+          $("#register").hide();
+
+
+          // fetchTodo()
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Log in successfully'
+          })
+
+      })
+      .fail(err => {
+          console.log(err)
+      })
+}
+
 
 function toRegister(e) {
   e.preventDefault();
@@ -84,10 +155,21 @@ function register(e) {
       $("#login").show();
       $("#register").hide();
       $("#home").hide();
-      // fetchTodos();
+      // fetchJokes();
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Your account has been registered'
+    })
     })
     .fail((err) => {
       console.log(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: err.responseJSON.msg
+    })
     });
 }
 
@@ -96,7 +178,19 @@ function logout() {
   $("#home").hide();
   $("#register").hide();
   localStorage.removeItem("token");
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
 }
+
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
+}
+
 
 function fetchMemes() {
   const token = localStorage.getItem("token");
@@ -300,3 +394,4 @@ function addFavourite(memeId) {
       console.log(err);
     });
 }
+
