@@ -65,12 +65,6 @@ List of available endpoints:
     }
     ```
 
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat register disini
-  ```
-
 ----
 
 **LOGIN**
@@ -124,12 +118,6 @@ List of available endpoints:
     }
     ```
 
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat login disini
-  ```
-
 -----
 
 
@@ -179,12 +167,6 @@ List of available endpoints:
         msg: "internal server error"
     }
     ```
-
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat get memes disini
-  ```
 
 ----
 
@@ -239,12 +221,6 @@ List of available endpoints:
         msg: "internal server error"
     }
     ```
-
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat get random disini
-  ```
 
 ----
 
@@ -330,12 +306,6 @@ List of available endpoints:
     }
     ```
 
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat add meme disini
-  ```
-
 ----
 
 
@@ -399,12 +369,6 @@ List of available endpoints:
     }
     ```
 
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat get favorit disini
-  ```
-
 ----
 
 **ADD FAVORITES**
@@ -465,12 +429,6 @@ List of available endpoints:
         msg: "authentication failed"
     }
     ```
-
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat add favorit disini
-  ```
 
 ----
 
@@ -537,11 +495,5 @@ List of available endpoints:
         msg: "favorite not found"
     }
     ```
-
-* **Sample Call:**
-
-  ```javascript
-  yang kerjain client isi $.ajax() buat delete favorit disini
-  ```
 
 ----
